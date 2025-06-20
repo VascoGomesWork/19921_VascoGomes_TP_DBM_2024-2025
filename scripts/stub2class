@@ -1,0 +1,81 @@
+#!/bin/zsh
+
+# --- Configuration ---
+# Get the directory where this script itself is located.
+SCRIPT_DIR=$(dirname "$0")
+
+# Determine the parent directory (where stub/java files are expected)
+# If SCRIPT_DIR is '.', the script is run from its own dir (unlikely given usage)
+# Otherwise, resolve the real path relative to the script dir.
+if [ "$SCRIPT_DIR" = "." ]; then
+  # This case handles running like './stub2class Account' from within scripts/
+  # It assumes stub/java files are one level up.
+  PARENT_DIR=".."
+else
+  # This case handles running like './scripts/stub2class Account' from parent dir
+  # The parent dir is simply '.' (the current directory) relative to the caller.
+  # However, for consistency in referencing files relative to the *script*,
+  # we can think of the parent dir as one level up from the script dir.
+  # Let's use the current working directory (`pwd`) as the base for file paths.
+  PARENT_DIR=$(pwd)
+fi
+
+# --- Argument Handling ---
+# Check if a base name argument is provided
+if [ -z "$1" ]; then
+  echo "Usage: $0 <BaseName>"
+  echo "Example: ./scripts/stub2class Account (run from parent directory)"
+  exit 1
+fi
+
+# Get the base name from the first argument
+BASE_NAME=$1
+
+# --- File Paths ---
+# Construct the full paths based on the PARENT_DIR
+# Stub file is expected in the PARENT_DIR
+STUB_FILE="${PARENT_DIR}/${BASE_NAME}.stub"
+# Java file is expected to be created in the PARENT_DIR
+JAVA_FILE="${PARENT_DIR}/${BASE_NAME}.java"
+
+# Paths to the helper scripts (relative to this script's location)
+COMPILESTUB_CMD="${SCRIPT_DIR}/compilestub" # Changed back from makestub
+JCOMPILE_CMD="${SCRIPT_DIR}/jcompile"
+
+
+# --- Pre-checks ---
+# Check if the stub file exists
+if [ ! -f "$STUB_FILE" ]; then
+  echo "Error: Stub file not found at expected location: $STUB_FILE"
+  echo "Ensure you are running this script from the directory containing '${BASE_NAME}.stub'"
+  exit 1
+fi
+
+# Check if the helper scripts exist and are executable
+if [ ! -x "$COMPILESTUB_CMD" ]; then
+    echo "Error: compilestub command not found or not executable at: $COMPILESTUB_CMD" # Changed message
+    exit 1
+fi
+if [ ! -x "$JCOMPILE_CMD" ]; then
+    echo "Error: jcompile command not found or not executable at: $JCOMPILE_CMD"
+    exit 1
+fi
+
+# --- Execution ---
+# Run the compile stub command
+echo "Compiling stub: $STUB_FILE using $COMPILESTUB_CMD" # Updated echo message
+"$COMPILESTUB_CMD" "$STUB_FILE"
+
+# Check if compilestub was successful (assuming it creates the .java file in PARENT_DIR)
+if [ ! -f "$JAVA_FILE" ]; then
+  echo "Error: Java file not created by compilestub at expected location: $JAVA_FILE" # Changed message
+  exit 1
+fi
+
+# Run the Java compilation command
+echo "Compiling Java: $JAVA_FILE using $JCOMPILE_CMD" # Updated echo message
+"$JCOMPILE_CMD" "$JAVA_FILE"
+
+echo "Compilation process finished for $BASE_NAME."
+
+

@@ -1,0 +1,31 @@
+class ECUControllerClass for net Centralina_Motor {
+
+    void receberVideo(String video) {
+		this:receberVideo(video);
+	}
+
+    void mostrarInformacoes(){
+        this:mostrarInformacoes();
+    }
+
+    void direcionarRodasDianteiras(){
+        this:direcionarRodasDianteiras();
+    }
+
+    void acelerarCarburador(){
+        this:acelerarCarburador();
+    }
+
+    void desligarBateria(){
+        this:desligarBateria();
+    }
+  
+    void acionarPararMotorEletrico(){
+        this:acionarPararMotorEletrico();
+    }
+
+    void controlarEGR(){
+        this:controlarEGR();
+    }
+
+}

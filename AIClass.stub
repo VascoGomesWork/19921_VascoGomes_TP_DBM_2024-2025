@@ -1,0 +1,7 @@
+class AIClass for net AIModel {
+
+    String preverCaminho(String video) {
+        this:preverCaminho(video);
+    }
+
+}
