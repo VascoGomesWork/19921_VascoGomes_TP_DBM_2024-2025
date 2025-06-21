@@ -436,4 +436,4 @@
                 CH.ifa.draw.standard.RelativeLocator 0.5 0.5   1  
         de.renew.gui.CPNTextFigure "attributes" "attributes" 4 "FrameColor" "Color" 255 199 158 255 "FigureWithID" "Int" 302 "TextAlignment" "Int" 1 "FillColor" "Color" 254 254 254 255 114 341 "posicaoAcelerador = ecuC.get(0);\ncombustivelDecrementado = posicaoAcelerador.equals(\"\") ? 5 : 2;" "SansSerif" 0 12 0 REF 361 
             CH.ifa.draw.standard.OffsetLocator -112 -30 
-                CH.ifa.draw.standard.RelativeLocator 0.5 0.5   1  NULL  
+                CH.ifa.draw.standard.RelativeLocator 0.5 0.5   1  NULL  0 0 1759 1192 
