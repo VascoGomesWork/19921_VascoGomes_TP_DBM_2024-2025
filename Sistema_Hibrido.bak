@@ -1,5 +1,0 @@
-11 
-    de.renew.gui.CPNDrawing 3 
-        de.renew.gui.PlaceFigure "attributes" "attributes" 1 "FigureWithID" "Int" 4 83 131 64 56 NULL  
-        de.renew.gui.TransitionFigure "attributes" "attributes" 1 "FigureWithID" "Int" 5 216 136 105 43 NULL  
-        CH.ifa.draw.figures.TextFigure "attributes" "attributes" 4 "FrameColor" "Color" 255 199 158 255 "FigureWithID" "Int" 2 "TextAlignment" "Int" 0 "FillColor" "Color" 255 199 158 255 628 40 "Sistema Hibrido" "SansSerif" 0 12 0 NULL NULL  NULL  
