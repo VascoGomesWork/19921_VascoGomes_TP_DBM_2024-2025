@@ -1,0 +1,11 @@
+Este projeto conta com as avaliações de:
+
+	- 4 Pontos na Escala dos Critérios Gerais 2.1.1 reerentes à complexidade do modelo;
+
+	- 4 Pontos na Escala de Critérios Gerais 2.1.2 referentes a simulação do modelo;
+
+	- 4 Pontos na Escala de Critérios das Referências 2.1.3;
+
+
+Para executar este modelo, basta apenas executar o ficheiro ./renew-s dentro da pasta de 
+scripts presente ma diretoria de pastas. 
